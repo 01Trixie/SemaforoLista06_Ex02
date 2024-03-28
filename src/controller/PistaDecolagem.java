@@ -61,7 +61,7 @@ public class PistaDecolagem extends Thread {
 	private void decolagem() { 
 		int cta = 0;
 		while(cta < 1) {
-			int escolha = (int) ((Math.random() *1.1) + 1);
+			int escolha = (int) ((Math.random() *2) + 1);
 			cta += 1;
 			if(escolha == 1) {
 				System.out.println("# " + idAviao + " foi para a pista Norte.");
@@ -70,6 +70,8 @@ public class PistaDecolagem extends Thread {
 					decolaNorte();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
+				} finally {
+					pistaNorte.release();
 				}
 			} else {
 				try {
@@ -78,6 +80,8 @@ public class PistaDecolagem extends Thread {
 					decolaSul();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
+				} finally {
+					pistaSul.release();
 				}
 			}
 		}
